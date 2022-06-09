@@ -1,0 +1,8 @@
+C:\Users\xab-win10\source\repos\pizza\pizza\bin\Debug\pizza.exe.config
+C:\Users\xab-win10\source\repos\pizza\pizza\bin\Debug\pizza.exe
+C:\Users\xab-win10\source\repos\pizza\pizza\bin\Debug\pizza.pdb
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.AssemblyReference.cache
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.SuggestedBindingRedirects.cache
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.CoreCompileInputs.cache
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.exe
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.pdb
