@@ -10,18 +10,20 @@ namespace pizza
         private static object lockGet = new object();
 
         private static object lockFill = new object();
-        public static int freePlace { get; set; } = 5;
+        public static int freePlaceCount { get; set; } = 5;
         public static int maxSize { get; set; } = 5;
+
+        private static bool isFull = true;
 
         public static int GetFromStockroom()
         {
             lock (lockGet)
             {
-                while (freePlace == maxSize) { }
+                while (freePlaceCount == maxSize) {}
 
                 int order = storageOrders[0];
                 storageOrders.RemoveAt(0);
-                freePlace++;
+                freePlaceCount++;
                 return order;
             } 
         }
@@ -29,20 +31,18 @@ namespace pizza
         {
             lock (lockFill)
             {
-                int flag = 0;
-
-                while (freePlace == 0)
+                while (freePlaceCount == 0)
                 {
-                    if (flag == 0)
+                    if (isFull)
                     {
                         Console.WriteLine($"Заказ номер [{order}] ожидает место на складе!");
-                        flag = 1;
+                        isFull = false;
                     }
                 }
 
                 storageOrders.Add(order);
-                Console.WriteLine($"Заказ номер [{order}] поступил на склад!");
-                freePlace--;
+                freePlaceCount--;
+                Console.WriteLine($"Заказ номер [{order}] поступил на склад!");               
             }
         }
     }

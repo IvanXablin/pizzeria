@@ -21,7 +21,7 @@ namespace pizza
         }
         public void DeliverDmirtyBargrov()
         {
-            while (Order.orders.Count != 0 || Stockroom.freePlace != Stockroom.maxSize)
+            while (Order.orders.Count != 0 || Stockroom.freePlaceCount != Stockroom.maxSize)
             {
                 GetOrder();
                 if (order < 0)

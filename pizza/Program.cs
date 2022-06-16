@@ -1,51 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 
 namespace pizza
 {
     class Program
-    {
-        
-        private static int countBaker = 2;
-        private static int countCourier = 2;
-        private static int countOrders = 2;
+    {       
+        private static string path;
+        private static string json;
 
         public static List<Baker> bakerList = new List<Baker>();
         public static List<Courier> courierList = new List<Courier>();
+        public static Json pizzaData = new Json();
+
 
         static void Main(string[] args)
-        {
-            StartPizzaria();
+        {      
+            StartPizzaria();        
         }
 
         static void StartPizzaria()
         {
             Random random = new Random();
 
-            Console.Write("Кол-во пекарей: ");
-            countBaker = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            Console.Write("Кол-во курьеров: ");
-            countCourier = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            Console.Write("Кол-во заказов: ");
-            countOrders = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
+            path = Path.Combine(Environment.CurrentDirectory, "../../pizza_data.json");
+            json = File.ReadAllText(path);
 
-            for (int i = 1; i <= countBaker; i++)
+            pizzaData = Newtonsoft.Json.JsonConvert.DeserializeObject<Json>(json);
+
+            TimerCallback tm = new TimerCallback(GenerateOrder);
+            Timer timer = new Timer(tm, random.Next(1, 4), 0, random.Next(2500, 5000));
+
+            for (int i = 1; i <= pizzaData.BakerCount; i++)
             {
                 bakerList.Add(new Baker(i));
             }
 
-            for (int i = 1; i <= countCourier; i++)
+            for (int i = 1; i <= pizzaData.CourierCount; i++)
             {
                 courierList.Add(new Courier());
-            }
-
-            for (int i = 1; i <= countOrders; i++)
-            {
-                Order.orders.Add(random.Next(1, 1000));
             }
 
             foreach (Courier courier in courierList)
@@ -59,5 +53,16 @@ namespace pizza
             }
         }
 
+        private static void GenerateOrder(object obj)
+        {
+            Random random = new Random();
+
+            int countOrders = Convert.ToInt32(obj);
+
+            for (int i = 0; i < countOrders; i++)
+            {
+                Order.orders.Add(random.Next(500, 3000));
+            }    
+        }
     }
 }

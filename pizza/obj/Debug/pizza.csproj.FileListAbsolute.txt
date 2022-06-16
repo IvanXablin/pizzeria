@@ -6,3 +6,6 @@ C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.SuggestedBind
 C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.CoreCompileInputs.cache
 C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.exe
 C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.pdb
+C:\Users\xab-win10\source\repos\pizza\pizza\bin\Debug\Newtonsoft.Json.dll
+C:\Users\xab-win10\source\repos\pizza\pizza\bin\Debug\Newtonsoft.Json.xml
+C:\Users\xab-win10\source\repos\pizza\pizza\obj\Debug\pizza.csproj.CopyComplete
